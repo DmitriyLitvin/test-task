@@ -16,9 +16,7 @@ public class CinemaApplication implements CommandLineRunner {
     }
 
     @Override
-    @Transactional
     public void run(String... strings)  {
 
     }
-
 }
