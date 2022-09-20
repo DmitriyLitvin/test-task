@@ -1,0 +1,28 @@
+services:
+  cinema:
+    image: cinema_app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    networks:
+      - cinema-net
+    depends_on:
+      - postgresql
+    ports:
+      - "8081:8081"
+
+  postgresql:
+    image: postgres
+    container_name: postgres
+    networks:
+      - cinema-net
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=cinema
+    ports:
+      - "5432:5432"
+
+networks:
+  cinema-net:
+    external: true
